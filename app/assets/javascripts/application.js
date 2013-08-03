@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require ./frontis/abstractClass
 //= require_tree ./frontis/.
 //= require_tree .
