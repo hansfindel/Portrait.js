@@ -25,7 +25,7 @@ AbstractAction = AbstractClass.extend({
 		// search template by uniqueID
 
 		// re-render template
-		
+				
 	},
 	displayInstance: function(){
 		this.hasInstance = true;

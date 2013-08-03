@@ -1,0 +1,4 @@
+AbstractController = AbstractClass.extend({
+	
+
+})
