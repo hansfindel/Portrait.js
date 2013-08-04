@@ -48,26 +48,8 @@ Handlebars.registerHelper('partial', function(routeName, options) {
 
 
 Handlebars.registerHelper('yield', function(options) {
-  var currentView = options.data.view, view = currentView;
+  //var currentView = options.data.view, view = currentView;
 
-  while (view && !get(view, 'layout')) {
-    view = get(view, 'parentView');
-  }
-  if(!!view){
-  	Console.log("You called yield in a template that was not a layout");	
-  }
-  
+  // detect url 
 
-  var template    = get(view, 'template'),
-    contextView   = get(view, '_viewForYield'),
-    keywords      = contextView.cloneKeywords();
-
-  currentView.appendChild(View, {
-    isVirtual:    true,
-    tagName:      '',
-    template:     template,
-    context:      get(contextView, 'context'),
-    controller:   get(contextView, 'controller'),
-    templateData: {keywords: keywords}
-  });
 });
