@@ -126,11 +126,14 @@ Handlebars.registerHelper('linkTo', function(linkName, path, options){
 });
 Handlebars.registerHelper('excecuteLinkTo', function(path, options){
 	console.log("excecuteLinkTo!");
+	Handlebars.helpers.redirectTo(path, options);
+	return ""
+})
+Handlebars.registerHelper('redirectTo', function(path, options){
 	stateObj = {url: path}
 	history.pushState(stateObj, "name..", path);
 	Handlebars.yielded = false;
 	Handlebars.helpers.yield();
-	return ""
 })
 //history.pushState(stateObj||{}, "page 2", "bar.html");
 
@@ -142,3 +145,44 @@ Handlebars.registerHelper("append", function(html, options){
 			}
 		});
 })
+
+
+
+Handlebars.registerHelper('trigger', function(actionName) {
+    var options = arguments[arguments.length - 1],
+        contexts = a_slice.call(arguments, 1, -1);
+       console.log(options);
+       console.log(contexts);
+
+    var hash = options.hash,
+        controller;
+
+    // create a hash to pass along to registerAction
+    var action = {
+      eventName: hash.on || "click"
+    };
+
+    parameters = {
+      context: this,
+      options: options,
+      params: contexts
+    };
+
+    console.log(action);
+
+    var root, target;
+
+    if (hash.target) {
+      root = this;
+      target = hash.target;
+    } else if (controller = options.data.keywords.controller) {
+      root = controller;
+    }
+
+    action.target = { root: root, target: target, options: options };
+    action.bubbles = hash.bubbles;
+
+    return new SafeString('data-action="' + actionId + '"');
+  });
+
+});
