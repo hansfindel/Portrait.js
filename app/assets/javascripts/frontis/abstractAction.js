@@ -45,11 +45,23 @@ AbstractAction = AbstractClass.extend({
 			displayInstance: function(target){
 				//console.log("displayInstance");
 				this.hasInstance = true;
+				this.getUniqueID(); //should instances have the uniqueID as a class?
 				var renderer = Renderer.new(this.templateName);
 				renderer.displayFromJSON(this.data, this.templateCollection, target);
-			}			
+			}, 
+			getUniqueID: function(){
+				this.uniqueID = AbstractAction.uniqueID(this);			
+			}
 		}
 		return action;
-	}
+	}, 
+	lastUniqueID: null;
+	uniqueID: function(action){
+		var uniq = Date.now();
+		while(lastUniqueID == uniq){
+			uniq = Date.now() + action.actionName;
+		}
+		return uniq;
+	})
 })
 // each action has its own timestamp id -> Date.now()
