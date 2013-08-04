@@ -31,8 +31,8 @@ Handlebars.registerHelper('partial', function(routeName, options) {
   
   var data = options.data || options;
   if(data){
-  	console.log("data: ", data)
-  	console.log("options: ", options)
+  	//console.log("data: ", data)
+  	//console.log("options: ", options)
   	//action.data = data;	
   }
   var html = action.partial();
@@ -51,5 +51,6 @@ Handlebars.registerHelper('yield', function(options) {
   //var currentView = options.data.view, view = currentView;
 
   // detect url 
-
+  var current_url = document.URL;
+  console.log(current_url);
 });
