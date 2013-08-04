@@ -15,7 +15,7 @@ Handlebars.TEMPLATES["application"] = makeTemplate( ""+
 	"<div class='link'>" +
 		"{{{ linkTo 'Click here' '/second' }}}" + 
 	"</div>" +
-	"<button {{trigger 'controller' 'create'}}" +
+	"<button {{trigger 'controller' 'create'}}> Button </button>" +
 "</div>"
 );
 

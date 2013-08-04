@@ -36,9 +36,9 @@ Controller = AbstractController.new({
 	create: Trigger.new({
 		controllerName: "controller", 
 		triggerName: "create", 
-		callback: function({
+		callback: function(){
 			console.log("just called controllers create");
-		})
+		}
 	})
 
 })

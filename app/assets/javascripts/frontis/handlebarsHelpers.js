@@ -74,7 +74,7 @@ Handlebars.registerHelper('yield', function(options) {
   	  // detect url 
 	  //var current_url = document.URL;
 	  var path = document.location.pathname; 
-	  console.log(path);
+	  //console.log(path);
 	  //console.log(path)
 	  //console.log(Object.keys(Router.routes))
       var route = Router.findByUrl(path)
@@ -148,43 +148,46 @@ Handlebars.registerHelper("append", function(html, options){
 
 
 
-Handlebars.registerHelper('trigger', function(actionName) {
-    var options = arguments[arguments.length - 1];
-      
-       console.log(options);
-       
+Handlebars.registerHelper('trigger', function(controllerName, actionName) {
+    var options = arguments[arguments.length - 1];  
+    console.log("trigger");
+    console.log(options);       
 
     var hash = options.hash,
         controller;
 
     // create a hash to pass along to registerAction
+    var path = document.location.pathname; 
+    var route = Router.findByUrl(path)
+
     var action = {
+      name: actionName, 
+      controller: controllerName, 
       eventName: hash.on || "click"
     };
-
     parameters = {
       context: this,
       options: options,
       params: {}
     };
-
     console.log(action);
 
     var root, target;
-
     if (hash.target) {
       root = this;
       target = hash.target;
-    } else if (controller = options.data.keywords.controller) {
-      root = controller;
+    } else {
+      root = route;
     }
 
     action.target = { root: root, target: target, options: options };
     action.bubbles = hash.bubbles;
     var actionId = Handlebars.helpers.activateTrigger(action);
-    return new SafeString('data-trigger="' + actionId + '"');
+    return new String('data-trigger=\"' + actionId + '\"');
 });
 
 Handlebars.registerHelper("activateTrigger", function(action, options){
-
+	console.log("activateTrigger");
+	console.log(action);
+	return action.name;
 })
