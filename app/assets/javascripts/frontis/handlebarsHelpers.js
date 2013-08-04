@@ -78,8 +78,11 @@ Handlebars.registerHelper('yield', function(options) {
   }
 });
 
-Handlebars.registerHelper('link', function(url, options){
+Handlebars.registerHelper('linkTo', function(linkName, path, options){
+	console.log("linkTo"); console.log(linkName); console.log(path); console.log(arguments);
+	stateObj = {url: path, link: linkName}
+	history.pushState(stateObj, "name..", path);
 	Handlebars.yielded = false;
-
+	Handlebars.helpers.yield();
 });
 //history.pushState(stateObj||{}, "page 2", "bar.html");

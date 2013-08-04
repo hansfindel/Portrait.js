@@ -8,8 +8,13 @@ Handlebars.TEMPLATES["application"] = makeTemplate( ""+
 		"yield" +  
 		"{{ yield }}" +
 	"</div>" +
-	"partial" +
+	"<div>" +
+		"partial" +
 	"{{partial 'controller_body_path' }}" +
+	"</div>" +
+	"<div class='link'>" +
+		"{{linkTo 'Click here' '/' }}" + 
+	"</div>" +
 "</div>"
 );
 
