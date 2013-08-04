@@ -8,3 +8,4 @@
 Router.root({name: "root", controller: Controller, action: "body"});
 
 Router.addRoute("/blah", {name: "controller_body", controller: Controller, action: "body"})
+Router.addRoute("/second", {name: "controller_second", controller: Controller, action: "second"})

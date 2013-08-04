@@ -50,7 +50,17 @@ Handlebars.registerHelper('partial', function(routeName, options) {
   */
 });
 
-
+Handlebars.registerHelper("suroundWith", function(object, html, options){
+	var str = "<div " 
+	if(object.id){
+		str += " id=" + object.id;
+	} 
+	if(object.class){
+		str += " class=" + object.class;
+	}
+	str += " >" + html + "</div>";
+	return str;
+})
 
 Handlebars.registerHelper('yield', function(options) {
   //var currentView = options.data.view, view = currentView;
@@ -63,16 +73,39 @@ Handlebars.registerHelper('yield', function(options) {
   if(Handlebars.yielded == false){
   	  // detect url 
 	  //var current_url = document.URL;
+	  var path = document.location.pathname; 
+	  console.log(path);
+	  //console.log(path)
+	  //console.log(Object.keys(Router.routes))
+      var route = Router.findByUrl(path)
+	  var action = route.controller.actions[route.action]
+
 	  Handlebars.yielded = true;
 
+	  if(Handlebars.yieldedId){
+	  	var html = action.partial();
+	  	console.log(html);
+	  	$("#"+Handlebars.yieldedId).html(html);;
+	  	return "";
+
+	  }else{
+	  	Handlebars.yieldedId = "yield-" + Date.now();	
+	  	  
+	    var surrounding = {id: Handlebars.yieldedId};
+		var html = Handlebars.helpers.suroundWith(surrounding, action.partial()); 
+		return html;
+	  }
+	
+	/*	  
 	  var path = document.location.pathname; 
 	  //console.log(path)
 	  //console.log(Object.keys(Router.routes))
 	  route = Router.findByUrl(path)
 	  var action = route.controller.actions[route.action]
-
+      
 	  var html = action.partial();
 	  return html;
+	  */
 	  /*
 	  yield_timeout = setTimeout(function(){
 	  	//$(container).html(html);

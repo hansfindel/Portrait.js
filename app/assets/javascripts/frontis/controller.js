@@ -5,7 +5,7 @@ Controller = AbstractController.new({
 	//application: Action.new("application")
 	name: "controller", 
 	application: Action.new({
-		controllerName: "Controller",
+		controllerName: "controller",
 		actionName: "application",
 		templateName: "application", 
 		templateContainer: "body", 
@@ -15,13 +15,21 @@ Controller = AbstractController.new({
 	}), 
 
 	body: Action.new({
-		controllerName: "Controller",
+		controllerName: "controller",
 		actionName: "body",
 		templateName: "body", 
 		templateContainer: "#container", 
 		data: {className: "asdf", content: "qweqr"},
 		hasInstance: false, 
 		uniqueInstance: false, 		
+	}), 
+
+	second: Action.new({
+		controllerName: "controller", 
+		actionName: "second", 
+		templateName: "second", 
+		templateContainer: "#container", 
+		data: {first: "MicroWave", second: "of", third: "Evil"}
 	})
 
 })
