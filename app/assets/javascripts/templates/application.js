@@ -6,14 +6,14 @@ Handlebars.TEMPLATES["application"] = makeTemplate( ""+
 	"{{content}}" + 
 	"<div id='container'>" +
 		"yield" +  
-		"{{ yield }}" +
+		"{{{ yield }}}" +
 	"</div>" +
 	"<div>" +
 		"partial" +
-	"{{partial 'controller_body_path' }}" +
+	"{{{partial 'controller_body_path' }}}" +
 	"</div>" +
 	"<div class='link'>" +
-		"{{linkTo 'Click here' '/' }}" + 
+		"{{{linkTo 'Click here' '/' }}}" + 
 	"</div>" +
 "</div>"
 );

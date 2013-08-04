@@ -35,8 +35,11 @@ Handlebars.registerHelper('partial', function(routeName, options) {
   	//console.log("options: ", options)
   	//action.data = data;	
   }
+  // with triple -> {{{}}}
   var html = action.partial();
-
+  return html;
+  // with double {{{}}}
+  /*
   partial_timeout = setTimeout(function(){
   	//$(container).html(html);
   	console.log("partial action")
@@ -44,7 +47,7 @@ Handlebars.registerHelper('partial', function(routeName, options) {
   	action.render()
   	clearTimeout(partial_timeout);
   }, 1)
-  
+  */
 });
 
 
@@ -69,20 +72,38 @@ Handlebars.registerHelper('yield', function(options) {
 	  var action = route.controller.actions[route.action]
 
 	  var html = action.partial();
-
+	  return html;
+	  /*
 	  yield_timeout = setTimeout(function(){
 	  	//$(container).html(html);
 	  	action.render()
 	  	clearTimeout(yield_timeout);
 	  }, 1)
+	  */
   }
 });
 
-Handlebars.registerHelper('linkTo', function(linkName, path, options){
-	console.log("linkTo"); console.log(linkName); console.log(path); console.log(arguments);
-	stateObj = {url: path, link: linkName}
+Handlebars.registerHelper('linkTo', function(linkName, path, options){	
+	//console.log(this);
+	//console.log(parent);
+	var html = "<a href='#' onclick='Handlebars.helpers.excecuteLinkTo('"+ path +"')>"+ linkName + "</a>"
+	//return Handlebars.helpers.append(html, options);
+	//return options.html(html)
+	return html;
+});
+Handlebars.registerHelper('excecuteLinkTo', function(path, options){
+	stateObj = {url: path}
 	history.pushState(stateObj, "name..", path);
 	Handlebars.yielded = false;
 	Handlebars.helpers.yield();
-});
+})
 //history.pushState(stateObj||{}, "page 2", "bar.html");
+
+Handlebars.registerHelper("append", function(html, options){
+	return $(document).domManip( arguments, function( elem ) {
+			if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
+				var target = manipulationTarget( this, elem );
+				target.appendChild( elem );
+			}
+		});
+})
