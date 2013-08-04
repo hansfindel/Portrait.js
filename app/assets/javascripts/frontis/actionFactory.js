@@ -31,6 +31,7 @@ Action = AbstractClass.extend({
 		return action;
 	},
 	defaultData: function(action){
+		templateContainer: "body", 
 		action.data = action.data || {};
 		action.hasInstance = false;
 		action.uniqueInstance = action.uniqueInstance || false;

@@ -6,8 +6,8 @@ Controller = AbstractController.new({
 		controllerName: "Controller",
 		actionName: "application",
 		templateName: "application", 
-		templateContainer: "application", 
-		data: {className: "frontis"},
+		templateContainer: "body", 
+		data: {className: "frontis", content: "holo"},
 		hasInstance: false, 
 		uniqueInstance: true, 
 	})

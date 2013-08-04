@@ -5,10 +5,12 @@ AbstractAction = AbstractClass.extend({
 			actionName: "",
 			templateName: "", 
 			templateContainer: "", 
+			templateCollection: null,
 			data: {className: "frontis"},
 			hasInstance: true, 
 			uniqueInstance: true, 
 			uniqueID: "",
+
 
 			render: function(){
 				if(this.hasInstance){
@@ -31,8 +33,8 @@ AbstractAction = AbstractClass.extend({
 			},
 			displayInstance: function(){
 				this.hasInstance = true;
-				var renderer = Renderer.new(this.templateName, null);
-				renderer.displayFromJSON(this.data, this.templateContainer);
+				var renderer = Renderer.new(this.templateName);
+				renderer.displayFromJSON(this.data, this.templateCollection, this.templateContainer);
 			}			
 		}
 		return action;

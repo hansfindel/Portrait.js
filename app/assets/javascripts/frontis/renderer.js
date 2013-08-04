@@ -1,5 +1,5 @@
 Renderer = AbstractClass.extend({
-  new: function(_template, _collection){
+  new: function(_template){
     if(typeof(_template)=="string"){
       _template = this.buildTemplate(_template);
     }
@@ -27,17 +27,32 @@ Renderer = AbstractClass.extend({
       displayFromJSON: function(json, collection, container){
         var product, _i, _len;
         var products = this.getCollection(json, collection);
-        for (_i = 0, _len = products.length; _i < _len; _i++) {
-          product = products[_i];
-          this.displayProduct(product, json, container); // if it needs additional data... not implemented yet
+        _len = products.length;
+        console.log("displayFromJSON");
+        console.log("_len = ", _len);
+        console.log("json = ", json);
+        if(_len == 0){
+          this.displayProduct(json, null, container);
+        }else{
+          for (_i = 0 ; _i < _len; _i++) {
+            product = products[_i];
+            this.displayProduct(product, json, container); // if it needs additional data... not implemented yet
+          }  
         }
         this.fireRenderCallbacks();
       }, 
       getCollection: function(json, collection){
-        return json[collection];
+        if(collection==null){
+          return [];
+        }else{
+          return json[collection];  
+        }
       }, 
       displayProduct: function(product, json, container){
         var html = this.buildHTML(product, json);
+        console.log(html);
+        console.log(container)
+        console.log($(container))
         $(container).append(html)
       }, 
       buildHTML: function(product, json){
