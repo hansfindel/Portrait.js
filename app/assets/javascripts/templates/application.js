@@ -5,7 +5,7 @@ Handlebars.TEMPLATES["application"] = makeTemplate( ""+
 "<div class={{className}}>" + 
 	"{{content}}" + 
 	"<div id='container'>" + 
-		"Container div" +
+		"{{partial 'controller_body_path' }}" +
 	"</div>" +
 "</div>"
 );

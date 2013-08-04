@@ -9,27 +9,35 @@ Handlebars.registerHelper('numberToCurrency', function(number) {
     return new Handlebars.SafeString(str);
 }); 
 
-Handlebars.registerHelper('partial', function(name, options) {
-	//name should be controller/action 
+Handlebars.registerHelper('partial', function(routeName, options) {
+	//routeName should be controller_action_path or and url (not implemented)
   var nameParts = name.split("/"),
       controller = nameParts[0], 
       action = nameParts[nameParts.length - 1];
 
+  
+  
+  route = Router.findByRouteName(routeName)
     // default templates should have an preceding underscore 
-  var template = "_" + lastPart;
+    //var template = "_" + action;
+  var action = route.controller.actions[route.action]
+  var template = action.templateName; 
 
-  var view = options.data.view,
-      underscoredName = [controller, template].join("/")
+  	//var underscoredName = [controller, template].join("/");
+	//console.log(underscoredName)
       //, found  = templateFor(underscoredName)
-      //template = view.templateForName(underscoredName),
-      //deprecatedTemplate = !template && view.templateForName(name);
+      
   //if(!found){
   //	Console.log("Unable to find partial with name '"+name+"'.")	
   //}
   
-  template = template || deprecatedTemplate;
   var data = options.data || options;
-  template(this, { data: data});
+  if(data){
+  	console.log("data: ", data)
+  	action.data = data;	
+  }
+  action.render();
+
 });
 
 

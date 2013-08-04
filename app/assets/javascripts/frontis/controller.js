@@ -2,6 +2,8 @@
 //Controller.defineActions(params)
 
 Controller = AbstractController.new({
+	//application: Action.new("application")
+	name: "controller", 
 	application: Action.new({
 		controllerName: "Controller",
 		actionName: "application",
@@ -11,13 +13,15 @@ Controller = AbstractController.new({
 		hasInstance: false, 
 		uniqueInstance: true, 
 	}), 
+
 	body: Action.new({
 		controllerName: "Controller",
 		actionName: "body",
 		templateName: "body", 
-		templateContainer: "", 
+		templateContainer: "#container", 
 		data: {className: "asdf", content: "qweqr"},
 		hasInstance: false, 
 		uniqueInstance: true, 		
 	})
+
 })

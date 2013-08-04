@@ -1,11 +1,11 @@
 Router = AbstractClass.extend({
 	routes: {}, 
 	addRoute: function(url, routeParams){
-		this.routes[url] = AbstractRoute.new(routeParams);
-		return this.routes[url];
+		Router.routes[url] = AbstractRoute.new(routeParams);
+		return Router.routes[url];
 	}, 
 	new: function(url, routeParams){
-		return this.addRoute(url, routeParams);
+		return Router.addRoute(url, routeParams);
 	},
 	resource: function(rootUrl, controller){
 		var newRoute = rootUrl + "/new";
@@ -24,6 +24,16 @@ Router = AbstractClass.extend({
 		// pending create and destroy... these should have no template
 	}, 
 	root: function(routeParams){
-		return this.addRoute("", routeParams);		
+		return this.addRoute("", arguments);		
+	}, 
+
+	findByRouteName: function(routeName){
+		var keys = Object.keys(Router.routes);
+		for(var _i = 0; _i < keys.length ; _i++){
+			var route = Router.routes[keys[_i]];
+			if(route.name == routeName){
+				return Router.routes[keys[_i]];
+			}
+		}
 	}
 });
