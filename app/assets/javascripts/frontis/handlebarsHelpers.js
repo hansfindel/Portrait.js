@@ -149,10 +149,10 @@ Handlebars.registerHelper("append", function(html, options){
 
 
 Handlebars.registerHelper('trigger', function(actionName) {
-    var options = arguments[arguments.length - 1],
-        contexts = a_slice.call(arguments, 1, -1);
+    var options = arguments[arguments.length - 1];
+      
        console.log(options);
-       console.log(contexts);
+       
 
     var hash = options.hash,
         controller;
@@ -165,7 +165,7 @@ Handlebars.registerHelper('trigger', function(actionName) {
     parameters = {
       context: this,
       options: options,
-      params: contexts
+      params: {}
     };
 
     console.log(action);
@@ -181,8 +181,10 @@ Handlebars.registerHelper('trigger', function(actionName) {
 
     action.target = { root: root, target: target, options: options };
     action.bubbles = hash.bubbles;
-    var actionId
+    var actionId = Handlebars.helpers.activateTrigger(action);
     return new SafeString('data-trigger="' + actionId + '"');
-  });
-
 });
+
+Handlebars.registerHelper("activateTrigger", function(action, options){
+
+})

@@ -30,6 +30,15 @@ Controller = AbstractController.new({
 		templateName: "second", 
 		templateContainer: "#container", 
 		data: {first: "MicroWave", second: "of", third: "Evil"}
+	}), 
+
+
+	create: Trigger.new({
+		controllerName: "controller", 
+		triggerName: "create", 
+		callback: function({
+			console.log("just called controllers create");
+		})
 	})
 
 })
