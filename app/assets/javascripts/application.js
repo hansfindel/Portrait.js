@@ -16,3 +16,7 @@
 //= require ./frontis/abstractClass
 //= require_tree ./frontis/.
 //= require_tree .
+
+$(document).ready(function(){
+	Controller.actions.application.render();	
+})

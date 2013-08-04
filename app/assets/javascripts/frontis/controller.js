@@ -10,5 +10,14 @@ Controller = AbstractController.new({
 		data: {className: "frontis", content: "holo"},
 		hasInstance: false, 
 		uniqueInstance: true, 
+	}), 
+	body: Action.new({
+		controllerName: "Controller",
+		actionName: "body",
+		templateName: "body", 
+		templateContainer: "", 
+		data: {className: "asdf", content: "qweqr"},
+		hasInstance: false, 
+		uniqueInstance: true, 		
 	})
 })

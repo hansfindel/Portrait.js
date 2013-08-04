@@ -70,14 +70,21 @@ Renderer = AbstractClass.extend({
     // "#picture-template"
     var source;
     if(typeof(source_container)=="string"){ 
-      if($(source_container).length){
-        source = $(source_container).html();  
-      }else{
-        source = $("#"+source_container).html();
+      console.log(Handlebars);
+      if(Handlebars.TEMPLATES[source_container]){
+        source = Handlebars.TEMPLATES[source_container];
+      }
+      else{
+        if($(source_container).length){
+          source = $(source_container).html();  
+        }else{
+          source = $("#"+source_container).html();
+        }        
       }
     }else{
       source = source_container.html();
     }
+    console.log(source);
     return Handlebars.compile(source);
   }
 
