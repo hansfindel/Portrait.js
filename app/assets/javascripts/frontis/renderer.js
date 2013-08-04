@@ -28,9 +28,6 @@ Renderer = AbstractClass.extend({
         var product, _i, _len;
         var products = this.getCollection(json, collection);
         _len = products.length;
-        console.log("displayFromJSON");
-        console.log("_len = ", _len);
-        console.log("json = ", json);
         if(_len == 0){
           this.displayProduct(json, null, container);
         }else{
@@ -50,9 +47,6 @@ Renderer = AbstractClass.extend({
       }, 
       displayProduct: function(product, json, container){
         var html = this.buildHTML(product, json);
-        console.log(html);
-        console.log(container)
-        console.log($(container))
         $(container).append(html)
       }, 
       buildHTML: function(product, json){
@@ -70,7 +64,7 @@ Renderer = AbstractClass.extend({
     // "#picture-template"
     var source;
     if(typeof(source_container)=="string"){ 
-      console.log(Handlebars);
+      //console.log(Handlebars);
       if(Handlebars.TEMPLATES[source_container]){
         source = Handlebars.TEMPLATES[source_container];
       }
@@ -84,7 +78,8 @@ Renderer = AbstractClass.extend({
     }else{
       source = source_container.html();
     }
-    console.log(source);
+    //console.log(source_container);
+    //console.log(source);
     return Handlebars.compile(source);
   }
 

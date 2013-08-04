@@ -21,7 +21,7 @@ Controller = AbstractController.new({
 		templateContainer: "#container", 
 		data: {className: "asdf", content: "qweqr"},
 		hasInstance: false, 
-		uniqueInstance: true, 		
+		uniqueInstance: false, 		
 	})
 
 })
