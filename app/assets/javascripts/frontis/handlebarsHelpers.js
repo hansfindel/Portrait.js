@@ -37,10 +37,12 @@ Handlebars.registerHelper('partial', function(routeName, options) {
   }
   var html = action.partial();
 
-  timeout = setTimeout(function(){
+  partial_timeout = setTimeout(function(){
   	//$(container).html(html);
+  	console.log("partial action")
+  	console.log(action)
   	action.render()
-  	clearTimeout(timeout);
+  	clearTimeout(partial_timeout);
   }, 1)
   
 });
@@ -49,8 +51,29 @@ Handlebars.registerHelper('partial', function(routeName, options) {
 
 Handlebars.registerHelper('yield', function(options) {
   //var currentView = options.data.view, view = currentView;
+  //console.log("yield")
+  //console.log(Handlebars.yielded);
+  if(Handlebars.yielded == undefined) {
+  	Handlebars.yielded = false;
+  }
+  
+  if(Handlebars.yielded == false){
+  	  // detect url 
+	  //var current_url = document.URL;
+	  Handlebars.yielded = true;
 
-  // detect url 
-  var current_url = document.URL;
-  console.log(current_url);
+	  var path = document.location.pathname; 
+	  //console.log(path)
+	  //console.log(Object.keys(Router.routes))
+	  route = Router.findByUrl(path)
+	  var action = route.controller.actions[route.action]
+
+	  var html = action.partial();
+
+	  yield_timeout = setTimeout(function(){
+	  	//$(container).html(html);
+	  		  	action.render()
+	  	clearTimeout(yield_timeout);
+	  }, 1)
+  }
 });

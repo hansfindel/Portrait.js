@@ -24,7 +24,8 @@ Router = AbstractClass.extend({
 		// pending create and destroy... these should have no template
 	}, 
 	root: function(routeParams){
-		return this.addRoute("", arguments);		
+		this.addRoute("", routeParams);		
+		this.addRoute("/", routeParams);		
 	}, 
 
 	findByRouteName: function(routeName){
@@ -35,5 +36,11 @@ Router = AbstractClass.extend({
 				return Router.routes[keys[_i]];
 			}
 		}
+	}, 
+	findByUrl: function(path){
+		var route = Router.routes[path];
+		//console.log(route);
+		//console.log(Router.routes)
+		return route;
 	}
 });

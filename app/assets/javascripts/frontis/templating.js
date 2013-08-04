@@ -1,5 +1,5 @@
 function hereDoc(f) {
-	console.log("here doc...")
+	//console.log("here doc...")
   return f.toString().
       replace(/^[^\/]+\/\*!?/, '').
       replace(/\*\/[^\/]+$/, '');

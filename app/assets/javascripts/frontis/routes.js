@@ -5,6 +5,6 @@
 // or resources 
 // Router.resource(rootUrl, controller)
 
-Router.root({name: "root", controller: Controller, action: "application"});
+Router.root({name: "root", controller: Controller, action: "body"});
 
 Router.addRoute("/blah", {name: "controller_body", controller: Controller, action: "body"})

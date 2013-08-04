@@ -4,9 +4,12 @@ if(Handlebars.TEMPLATES == null){
 Handlebars.TEMPLATES["application"] = makeTemplate( ""+ 
 "<div class={{className}}>" + 
 	"{{content}}" + 
-	"<div id='container'>" + 
-		"{{partial 'controller_body_path' }}" +
+	"<div id='container'>" +
+		"yield" +  
+		"{{ yield }}" +
 	"</div>" +
+	"partial" +
+	"{{partial 'controller_body_path' }}" +
 "</div>"
 );
 

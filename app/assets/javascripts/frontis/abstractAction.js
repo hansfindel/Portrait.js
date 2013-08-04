@@ -25,6 +25,7 @@ AbstractAction = AbstractClass.extend({
 				if(this.hasInstance){
 					if(this.uniqueInstance){
 						//no can do
+						console.log(this);
 						console.log("cant render...")
 					}else{
 						this.displayInstance(target)
