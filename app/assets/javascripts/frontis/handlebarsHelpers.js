@@ -86,16 +86,18 @@ Handlebars.registerHelper('yield', function(options) {
 Handlebars.registerHelper('linkTo', function(linkName, path, options){	
 	//console.log(this);
 	//console.log(parent);
-	var html = "<a href='#' onclick='Handlebars.helpers.excecuteLinkTo('"+ path +"')>"+ linkName + "</a>"
+	var html = "<a href='#' onclick='Handlebars.helpers.excecuteLinkTo(\""+ String(path) +"\")'>"+ linkName + "</a>"
 	//return Handlebars.helpers.append(html, options);
 	//return options.html(html)
 	return html;
 });
 Handlebars.registerHelper('excecuteLinkTo', function(path, options){
+	console.log("excecuteLinkTo!");
 	stateObj = {url: path}
 	history.pushState(stateObj, "name..", path);
 	Handlebars.yielded = false;
 	Handlebars.helpers.yield();
+	return ""
 })
 //history.pushState(stateObj||{}, "page 2", "bar.html");
 

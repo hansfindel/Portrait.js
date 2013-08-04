@@ -10,10 +10,10 @@ Handlebars.TEMPLATES["application"] = makeTemplate( ""+
 	"</div>" +
 	"<div>" +
 		"partial" +
-	"{{{partial 'controller_body_path' }}}" +
+	"{{{ partial 'controller_body_path' }}}" +
 	"</div>" +
 	"<div class='link'>" +
-		"{{{linkTo 'Click here' '/' }}}" + 
+		"{{{ linkTo 'Click here' '/' }}}" + 
 	"</div>" +
 "</div>"
 );
