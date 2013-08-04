@@ -55,13 +55,13 @@ AbstractAction = AbstractClass.extend({
 		}
 		return action;
 	}, 
-	lastUniqueID: null;
+	lastUniqueID: null,
 	uniqueID: function(action){
 		var uniq = Date.now();
-		while(lastUniqueID == uniq){
+		while(this.lastUniqueID == uniq){
 			uniq = Date.now() + action.actionName;
 		}
 		return uniq;
-	})
+	}
 })
 // each action has its own timestamp id -> Date.now()
