@@ -18,5 +18,6 @@
 //= require_tree .
 
 $(document).ready(function(){
+	Controller.actions.application.makeSuper();
 	Controller.actions.application.render();	
 })

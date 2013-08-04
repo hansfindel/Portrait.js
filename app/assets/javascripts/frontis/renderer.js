@@ -24,12 +24,12 @@ Renderer = AbstractClass.extend({
         this.template = Renderer.buildTemplate(source_container);
       },
 
-      displayFromJSON: function(json, collection, container){
+      displayFromJSON: function(json, collection, container, isUnique){
         var product, _i, _len;
         var products = this.getCollection(json, collection);
         _len = products.length;
         if(_len == 0){
-          this.displayProduct(json, null, container);
+          this.displayProduct(json, null, container, isUnique);
         }else{
           for (_i = 0 ; _i < _len; _i++) {
             product = products[_i];
@@ -45,17 +45,23 @@ Renderer = AbstractClass.extend({
           return json[collection];  
         }
       }, 
-      displayProduct: function(product, json, container){
+      displayProduct: function(product, json, container, isUnique){
+        if(isUnique == null){ isUnique = false }
         var html = this.buildHTML(product, json);
-        $(container).append(html)
+        if(isUnique){
+          $(container).html(html)
+        }else{
+          $(container).append(html)  
+        }
+        
       }, 
       buildHTML: function(product, json){
         //if more data were needed, here is the place to build the full data object
         var data = product;
         return this.template(data);
       }, 
-      displayWith: function(data, containerSelector){
-        this.displayProduct(data, null, containerSelector)
+      displayWith: function(data, containerSelector, isUnique){
+        this.displayProduct(data, null, containerSelector, isUnique)
       }
     };
     return o;

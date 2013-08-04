@@ -9,6 +9,7 @@ AbstractAction = AbstractClass.extend({
 			data: {className: "frontis"},
 			hasInstance: true, 
 			uniqueInstance: true, 
+			isAbsolute: false, 
 			uniqueID: "",
 
 			partial: function(){
@@ -25,8 +26,13 @@ AbstractAction = AbstractClass.extend({
 				if(this.hasInstance){
 					if(this.uniqueInstance){
 						//no can do
-						console.log(this);
-						console.log("cant render...")
+						if(this.isAbsolute){
+							this.displayInstance(target, true)	
+						}else{
+							console.log(this);
+							console.log("cant render...")
+						}
+
 					}else{
 						this.displayInstance(target)
 					}
@@ -42,13 +48,16 @@ AbstractAction = AbstractClass.extend({
 				// re-render template
 
 			},
-			displayInstance: function(target){
+			displayInstance: function(target, isUniq){
 				//console.log("displayInstance");
 				this.hasInstance = true;
 				this.getUniqueID(); //should instances have the uniqueID as a class?
 				var renderer = Renderer.new(this.templateName);
-				renderer.displayFromJSON(this.data, this.templateCollection, target);
+				renderer.displayFromJSON(this.data, this.templateCollection, target, isUniq);
 			}, 
+			makeSuper: function(){
+				this.isAbsolute = true;
+			},
 			getUniqueID: function(){
 				this.uniqueID = AbstractAction.uniqueID(this);			
 			}

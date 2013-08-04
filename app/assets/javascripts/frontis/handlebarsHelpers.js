@@ -72,8 +72,14 @@ Handlebars.registerHelper('yield', function(options) {
 
 	  yield_timeout = setTimeout(function(){
 	  	//$(container).html(html);
-	  		  	action.render()
+	  	action.render()
 	  	clearTimeout(yield_timeout);
 	  }, 1)
   }
 });
+
+Handlebars.registerHelper('link', function(url, options){
+	Handlebars.yielded = false;
+
+});
+//history.pushState(stateObj||{}, "page 2", "bar.html");
