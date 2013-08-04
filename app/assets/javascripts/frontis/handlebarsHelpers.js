@@ -181,8 +181,8 @@ Handlebars.registerHelper('trigger', function(actionName) {
 
     action.target = { root: root, target: target, options: options };
     action.bubbles = hash.bubbles;
-
-    return new SafeString('data-action="' + actionId + '"');
+    var actionId
+    return new SafeString('data-trigger="' + actionId + '"');
   });
 
 });
