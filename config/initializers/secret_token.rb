@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Frontis::Application.config.secret_key_base = 'e0d60250d5e86e89dfd309826a6682c72aedfdef8b0ab8432e6dc3532085bc387df85cdbe895f6edb3eef17e5626a1d61b3dad853e916c9e5b885daade1e60fe'
+Portraitjs::Application.config.secret_key_base = 'e0d60250d5e86e89dfd309826a6682c72aedfdef8b0ab8432e6dc3532085bc387df85cdbe895f6edb3eef17e5626a1d61b3dad853e916c9e5b885daade1e60fe'
