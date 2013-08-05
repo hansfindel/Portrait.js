@@ -3,7 +3,7 @@ AbstractTrigger = AbstractClass.extend({
 		var action = {
 			routeName: "",
 			controllerName: "",
-			actionName: "",
+			//actionName: "",
 			triggerName: "",
 			callback: function(){}
 		}

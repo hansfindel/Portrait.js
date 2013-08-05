@@ -150,8 +150,8 @@ Handlebars.registerHelper("append", function(html, options){
 
 Handlebars.registerHelper('trigger', function(controllerName, actionName) {
     var options = arguments[arguments.length - 1];  
-    console.log("trigger");
-    console.log(options);       
+    //console.log("trigger");
+    //console.log(options);       
     var routeName = Router.RouteNameForTrigger(controllerName, actionName);
     // the option is to create indexes and trigger it them on click 
     //"<a href='#' onclick='Handlebars.helpers.excecuteLinkTo(\""+ String(path) +"\")'>"+ linkName + "</a>"
@@ -159,11 +159,8 @@ Handlebars.registerHelper('trigger', function(controllerName, actionName) {
 });
 
 Handlebars.registerHelper("activateTrigger", function(routeName, options){
-	console.log("activateTrigger");
-	
-	var hash = options.hash;
-    // create a hash to pass along to registerAction
-
+	//console.log("activateTrigger");
+	options = options || {}
     var route = Router.RouteForName(routeName)
 
     /*
@@ -188,8 +185,7 @@ Handlebars.registerHelper("activateTrigger", function(routeName, options){
     }
 	*/
 	var action = route.controller.actions[route.action]
-    action.target = { root: root, target: target, options: options };
-    action.bubbles = hash.bubbles;
-
-	action();
+    action.target = { root: route, options: options };
+    //console.log(action);
+	action.callback();
 })
