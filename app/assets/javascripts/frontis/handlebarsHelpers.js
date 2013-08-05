@@ -83,6 +83,8 @@ Handlebars.registerHelper('yield', function(options) {
 	  Handlebars.yielded = true;
 
 	  if(Handlebars.yieldedId){
+      console.log(route)
+      console.log(action)
 	  	var html = action.partial();
 	  	console.log(html);
 	  	$("#"+Handlebars.yieldedId).html(html);;
