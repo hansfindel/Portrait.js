@@ -83,10 +83,10 @@ Handlebars.registerHelper('yield', function(options) {
 	  Handlebars.yielded = true;
 
 	  if(Handlebars.yieldedId){
-      console.log(route)
-      console.log(action)
+      //console.log(route)
+      //console.log(action)
 	  	var html = action.partial();
-	  	console.log(html);
+	  	//console.log(html);
 	  	$("#"+Handlebars.yieldedId).html(html);;
 	  	return "";
 
@@ -186,8 +186,13 @@ Handlebars.registerHelper("activateTrigger", function(routeName, options){
       root = route;
     }
 	*/
+
 	var action = route.controller.actions[route.action]
-    action.target = { root: route, options: options };
-    //console.log(action);
-	action.callback();
+  action.target = { root: route, options: options };
+    
+  //console.log(route)
+  //console.log(action);
+	//console.log(action.callback)
+  action.callback();
+
 })

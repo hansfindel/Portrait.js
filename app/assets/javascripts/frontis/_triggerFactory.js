@@ -33,7 +33,7 @@ Trigger = AbstractClass.extend({
 		trigger.controllerName = trigger.controllerName || "";
 		trigger.triggerName = trigger.triggerName  || trigger.action || ""; //action is the name passed in the router
 		trigger.routeName = trigger.routeName || [trigger.controllerName, trigger.triggerName, "trigger"].join("_");
-		trigger.callback = function(){};
+		trigger.callback = trigger.callback || function(){};
 	}
 
 })
