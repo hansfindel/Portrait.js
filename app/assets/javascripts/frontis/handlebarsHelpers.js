@@ -154,31 +154,31 @@ Handlebars.registerHelper('trigger', function(controllerName, actionName) {
     console.log(options);       
     var routeName = Router.RouteNameForTrigger(controllerName, actionName);
     // the option is to create indexes and trigger it them on click 
-    return new String('onclick=\'Handlebars.helpers.activateTrigger('+ routeName + ')\'');
+    //"<a href='#' onclick='Handlebars.helpers.excecuteLinkTo(\""+ String(path) +"\")'>"+ linkName + "</a>"
+    return new String('onclick=\'Handlebars.helpers.activateTrigger(\"'+ routeName + '\");\'');
 });
 
-Handlebars.registerHelper("activateTrigger", function(controller, name, options){
+Handlebars.registerHelper("activateTrigger", function(routeName, options){
 	console.log("activateTrigger");
-	console.log(name);
-	    var hash = options.hash,
-        controller;
-
+	
+	var hash = options.hash;
     // create a hash to pass along to registerAction
-    var path = document.location.pathname; 
-    var route = Router.findByUrl(path)
 
+    var route = Router.RouteForName(routeName)
+
+    /*
     var action = {
-      name: actionName, 
+      name: routeName, 
       controller: controllerName, 
       eventName: hash.on || "click"
     };
+    
     parameters = {
       context: this,
       options: options,
       params: {}
     };
     console.log(action);
-
     var root, target;
     if (hash.target) {
       root = this;
@@ -186,9 +186,10 @@ Handlebars.registerHelper("activateTrigger", function(controller, name, options)
     } else {
       root = route;
     }
-
+	*/
+	var action = route.controller.actions[route.action]
     action.target = { root: root, target: target, options: options };
     action.bubbles = hash.bubbles;
 
-	return action.name;
+	action();
 })

@@ -46,11 +46,11 @@ Router = AbstractClass.extend({
 
 	TriggerFor: function(controller, trigger){
 		var keys = Object.keys(Router.routes);
-		console.log(controller)
-		console.log(trigger)
+		//console.log(controller)
+		//console.log(trigger)
 		for(var _i = 0; _i < keys.length ; _i++){
 			var route = Router.routes[keys[_i]];
-			console.log(route);
+			//console.log(route);
 			if(route.action == trigger){
 				return Router.routes[keys[_i]];
 			}
@@ -63,5 +63,16 @@ Router = AbstractClass.extend({
 			return route.name;
 		}
 		return "";
+	}, 
+
+	RouteForName: function(routeName){
+		var keys = Object.keys(Router.routes);
+		for(var _i = 0; _i < keys.length ; _i++){
+			var route = Router.routes[keys[_i]];
+			if(route.name == routeName){
+				return Router.routes[keys[_i]];
+			}
+		}
+		return null;
 	}
 });
