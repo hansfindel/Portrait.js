@@ -152,8 +152,15 @@ Handlebars.registerHelper('trigger', function(controllerName, actionName) {
     var options = arguments[arguments.length - 1];  
     console.log("trigger");
     console.log(options);       
+    var routeName = Router.RouteNameForTrigger(controllerName, actionName);
+    // the option is to create indexes and trigger it them on click 
+    return new String('onclick=\'Handlebars.helpers.activateTrigger('+ routeName + ')\'');
+});
 
-    var hash = options.hash,
+Handlebars.registerHelper("activateTrigger", function(controller, name, options){
+	console.log("activateTrigger");
+	console.log(name);
+	    var hash = options.hash,
         controller;
 
     // create a hash to pass along to registerAction
@@ -182,12 +189,6 @@ Handlebars.registerHelper('trigger', function(controllerName, actionName) {
 
     action.target = { root: root, target: target, options: options };
     action.bubbles = hash.bubbles;
-    var actionId = Handlebars.helpers.activateTrigger(action);
-    return new String('data-trigger=\"' + actionId + '\"');
-});
 
-Handlebars.registerHelper("activateTrigger", function(action, options){
-	console.log("activateTrigger");
-	console.log(action);
 	return action.name;
 })
