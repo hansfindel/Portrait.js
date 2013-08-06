@@ -1,8 +1,8 @@
 GIT
   remote: git@github.com:hansfindel/rails-handlebars.git
-  revision: f403e2eb3563c991a0b5b07085024358e8fbf46c
+  revision: c8822e229e95bcecca2c12f4c5d20343994b234b
   specs:
-    rails-handlebars (0.2)
+    rails-handlebars (1.0.2)
       sprockets (> 2.0.3)
 
 GEM
