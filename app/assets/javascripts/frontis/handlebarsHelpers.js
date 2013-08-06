@@ -126,7 +126,7 @@ Handlebars.registerHelper('linkTo', function(linkName, path, htmlOptions, option
     htmlOptions = null;
   }
 
-  console.log(htmlOptions);
+  //console.log(htmlOptions);
 	var html = "<a href='#' "+ htmlOptions + " onclick='Handlebars.helpers.excecuteLinkTo(\""+ String(path) +"\")'>"+ linkName + "</a>"
 	//return Handlebars.helpers.append(html, options);
 	//return options.html(html)
@@ -134,7 +134,8 @@ Handlebars.registerHelper('linkTo', function(linkName, path, htmlOptions, option
 });
 
 Handlebars.registerHelper('excecuteLinkTo', function(path, options){
-	console.log("excecuteLinkTo!");
+  console.log(options);
+	//console.log("excecuteLinkTo!");
 	Handlebars.helpers.redirectTo(path, options);
 	return ""
 })
