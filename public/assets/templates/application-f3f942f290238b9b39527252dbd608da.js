@@ -4,7 +4,7 @@ if(Handlebars.TEMPLATES == null){
 Handlebars.TEMPLATES["application"] = makeTemplate( ""+ 
 "<header class='navbar'> " + 
 	"<section class='title brand'>" +
-			"{{{ linkTo 'Portrait JS' '/' }}}" + 
+			"{{{ link_to 'Portrait JS',root_path, class: 'navbar-brand brand-title' }}}" + 
 			"<nav class='nav-collapse collapse navbar-responsive-collapse'>" + 
 	"</section>" +
 "</header>" + 
@@ -37,3 +37,4 @@ EOF
 </div>
 );
 EOF*/
+;
