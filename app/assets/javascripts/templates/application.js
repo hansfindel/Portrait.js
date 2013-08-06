@@ -8,20 +8,23 @@ Handlebars.TEMPLATES["application"] = makeTemplate( ""+
 			"<nav class='nav-collapse collapse navbar-responsive-collapse'>" + 
 	"</section>" +
 "</header>" + 
-"<div class={{className}} >" + 
+"<div class='{{className}} content main-content' >" + 
 	"{{content}}" + 
-	"<div id='container'>" +
+	"<div id='container row'>" +
 		"yield" +  
 		"{{{ yield }}}" +
 	"</div>" +
-	"<div>" +
+	"<div class='row'>" +
 		"partial" +
 	"{{{ partial 'controller_body_path' }}}" +
 	"</div>" +
-	"<div class='link'>" +
+	"<div class='link row'>" +
 		"{{{ linkTo 'Click here' '/second' }}}" + 
 	"</div>" +
-	"<button {{{trigger 'controller' 'create'}}}> Button </button>" +
+	"<div class='row'></div>" + 
+	"<div class='row'>" + 
+		"<button {{{trigger 'controller' 'create'}}}> Button </button>" +
+	"</div>" +
 "</div>"
 );
 
