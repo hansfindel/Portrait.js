@@ -117,15 +117,22 @@ Handlebars.registerHelper('yield', function(options) {
 	  */
   }
 });
-
-Handlebars.registerHelper('linkTo', function(linkName, path, options){	
+Handlebars.registerHelper('linkTo', function(linkName, path, htmlOptions, options){	
 	//console.log(this);
 	//console.log(parent);
-	var html = "<a href='#' onclick='Handlebars.helpers.excecuteLinkTo(\""+ String(path) +"\")'>"+ linkName + "</a>"
+  
+  if(options==null){
+    options = htmlOptions;
+    htmlOptions = null;
+  }
+
+  console.log(htmlOptions);
+	var html = "<a href='#' "+ htmlOptions + " onclick='Handlebars.helpers.excecuteLinkTo(\""+ String(path) +"\")'>"+ linkName + "</a>"
 	//return Handlebars.helpers.append(html, options);
 	//return options.html(html)
 	return html;
 });
+
 Handlebars.registerHelper('excecuteLinkTo', function(path, options){
 	console.log("excecuteLinkTo!");
 	Handlebars.helpers.redirectTo(path, options);

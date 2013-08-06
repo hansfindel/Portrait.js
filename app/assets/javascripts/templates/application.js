@@ -4,7 +4,7 @@ if(Handlebars.TEMPLATES == null){
 Handlebars.TEMPLATES["application"] = makeTemplate( ""+ 
 "<header class='navbar'> " + 
 	"<section class='title brand'>" +
-			"{{{ linkTo 'Portrait JS' '/' }}}" + 
+			"{{{ linkTo 'Portrait JS' '/' 'class=navbar-brand brand-title' }}}" + 
 			"<nav class='nav-collapse collapse navbar-responsive-collapse'>" + 
 	"</section>" +
 "</header>" + 
