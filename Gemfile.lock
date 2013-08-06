@@ -1,3 +1,9 @@
+PATH
+  remote: ../../rails-pojects/gems/rails-handlebars
+  specs:
+    rails-handlebars (0.0.13)
+      sprockets (> 2.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -73,8 +79,6 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rename (1.0.0)
-      rails (>= 3.0.0)
     sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -115,7 +119,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.0)
-  rename
+  rails-handlebars!
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

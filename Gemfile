@@ -44,5 +44,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# if changing name to the entire app:
+#gem 'rename'
 
-gem 'rename'
+gem 'rails-handlebars', path: '../../rails-pojects/gems/rails-handlebars'
