@@ -47,4 +47,4 @@ end
 # if changing name to the entire app:
 #gem 'rename'
 
-gem 'rails-handlebars', path: '../../rails-pojects/gems/rails-handlebars'
+gem 'rails-handlebars', git: "git@github.com:hansfindel/rails-handlebars.git" #, path: '../../rails-pojects/gems/rails-handlebars'

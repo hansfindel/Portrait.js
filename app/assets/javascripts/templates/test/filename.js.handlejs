@@ -1,0 +1,6 @@
+<div class='handlejs test'>
+	{{title}}
+	<div class='container'>
+		{{contained}}
+	</div>
+</div>

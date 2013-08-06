@@ -1,0 +1,6 @@
+<div class='handle js test'>
+	{{className}}
+	<div class='container'>
+		{{content}}
+	</div>
+</div>

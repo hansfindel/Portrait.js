@@ -1,7 +1,8 @@
-PATH
-  remote: ../../rails-pojects/gems/rails-handlebars
+GIT
+  remote: git@github.com:hansfindel/rails-handlebars.git
+  revision: f403e2eb3563c991a0b5b07085024358e8fbf46c
   specs:
-    rails-handlebars (0.0.13)
+    rails-handlebars (0.2)
       sprockets (> 2.0.3)
 
 GEM
