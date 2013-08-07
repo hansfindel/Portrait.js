@@ -1,6 +1,0 @@
-<div class='body'>
-	{{className}}
-	<div class='container'>
-		{{content}}
-	</div>
-</div>
