@@ -12,9 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ../../../vendor/assets/javascripts/handlebars
 //= require_tree ../../../vendor/assets/javascripts/
+//= require ./frontis/framework/abstractClass
+//= require ./frontis/framework/abstractRenderer
+//= require ./frontis/framework/renderer
+//= require_tree ./frontis/framework
 //= require turbolinks
-//= require ./frontis/abstractClass
 //= require_tree ./frontis/.
 //= require_tree .
 
