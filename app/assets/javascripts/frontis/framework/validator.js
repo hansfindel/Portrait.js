@@ -84,6 +84,7 @@ Validator = AbstractClass.extend({
         var name = params_array[i];   
         var message = this.get_message(default_message, name, "required");    
         var validation = [this.presentValue, name, message];
+        // use abstractValidations instaed of arrays
         //console.log(validations);
         validations.push(validation);
       }

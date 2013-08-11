@@ -37,5 +37,8 @@ AbstractModel = AbstractClass.extend({
 	}, 
 	copy: function(object){
 		return this.new(Class.ownProperties(object))
+	}, 
+	addValidation: function(){
+		this.validator
 	}
 })
