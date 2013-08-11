@@ -139,5 +139,6 @@ Validator = AbstractClass.extend({
         return errors;
       }
     }
+    return validatorObject;
   }
 })
