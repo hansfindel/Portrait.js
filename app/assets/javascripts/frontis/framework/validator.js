@@ -61,7 +61,17 @@ Validator = AbstractClass.extend({
       usernameFormat: function(s){
         var format = /^[A-Za-z0-9._%+-]*@[A-Za-z0-9.-]*$/; // no @
         return !format.test(s);
-      }, 
+      },
+      testWithFormat: function(format){
+        return function(s){
+          if(typeof(format) == "object"){
+            //lets assume its a regex
+            return format.test(s);
+          }else{
+            return format == s;
+          }
+        }
+      } 
       get_message: function(default_message, attr_name, validation_message){
         var message;
       if(default_message){
@@ -102,15 +112,26 @@ Validator = AbstractClass.extend({
       return validations;
       },
       require_username_format_of: function(params_array, default_message){
-      validations = this.validations;
-        for(var i = 0; i < params_array.length; i++)
-      { 
-        var name = params_array[i];
-        var message = this.get_message(default_message, name, "not a valid value");   
-        var validation = [this.usernameFormat, name, message];
-        validations.push(validation);
-      }
-      return validations;
+        validations = this.validations;
+          for(var i = 0; i < params_array.length; i++)
+        { 
+          var name = params_array[i];
+          var message = this.get_message(default_message, name, "not a valid value");   
+          var validation = [this.usernameFormat, name, message];
+          validations.push(validation);
+        }
+        return validations;
+      },
+      require_format_of: function(format, params_array, default_message){
+        validations = this.validations;
+          for(var i = 0; i < params_array.length; i++)
+        { 
+          var name = params_array[i];
+          var message = this.get_message(default_message, name, "not a valid value");   
+          var validation = [this.testWithFormat(format), name, message];
+          validations.push(validation);
+        }
+        return validations;
       },
       require_length_validation_of: function(params_array, min, max, default_message){
         validations = this.validations;
