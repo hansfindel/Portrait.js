@@ -27,7 +27,7 @@ AbstractModel = AbstractClass.extend({
 		}
 		return object;
 	}, 
-	validator: null, 
+	validator: Validator.new({}), 
 	validate: function(object){
 		if(this.validator){
 			return this.validator.validate(object);
