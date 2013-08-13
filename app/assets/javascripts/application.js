@@ -15,6 +15,7 @@
 //= require ../../../vendor/assets/javascripts/handlebars
 //= require_tree ../../../vendor/assets/javascripts/
 //= require ./frontis/framework/abstractClass
+//= require ./frontis/framework/validator
 //= require ./frontis/framework/abstractRenderer
 //= require ./frontis/framework/renderer
 //= require_tree ./frontis/framework

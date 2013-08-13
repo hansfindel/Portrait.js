@@ -1,4 +1,4 @@
-AbstractValidation = Class.extend({
+AbstractValidation = AbstractClass.extend({
 	new: function(_function, _target, _message){
 		if(_function == "function"){
 			f = _function;

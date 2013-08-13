@@ -14,7 +14,8 @@ AbstractClass = {
 			extendingClass = Class;
 		}
 
-		var creator = this;
+		//var creator = this;
+		var creator = extendingClass;
 		// if some params management would be needed
 		var newClass = {
 			constructor: function(){return creator;}, 

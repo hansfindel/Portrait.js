@@ -27,6 +27,12 @@ AbstractModel = AbstractClass.extend({
 		}
 		return object;
 	}, 
+	//extend: function(params, inheritPropertyValues, extendingClass){
+	extend: function(params, extendingClass){
+		self = this;
+		o = AbstractClass.extend(params, true, self);
+		return o;
+	},
 	validator: Validator.new({}), 
 	validate: function(object){
 		if(this.validator){

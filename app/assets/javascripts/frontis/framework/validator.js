@@ -5,6 +5,10 @@ Validator = AbstractClass.extend({
       notify: function(string){
         console.log(string);
       }, 
+      validate: function(params){
+        //console.log(params)
+        return this.valid_params(params);
+      },
       valid_params: function(params){
         var errors = this.get_validation_errors(params);
         if(errors.length == 0){
@@ -71,7 +75,7 @@ Validator = AbstractClass.extend({
             return format == s;
           }
         }
-      } 
+      }, 
       get_message: function(default_message, attr_name, validation_message){
         var message;
       if(default_message){
@@ -81,7 +85,7 @@ Validator = AbstractClass.extend({
           message = default_message(attr_name)
         }
       }else{
-        message = "The attribute " + attr_name + " is " + validation_message;
+        message = "The attribute " + attr_name + " " + validation_message;
       }
       return message;
       },
@@ -92,7 +96,7 @@ Validator = AbstractClass.extend({
         for(var i = 0; i < params_array.length; i++)
       { 
         var name = params_array[i];   
-        var message = this.get_message(default_message, name, "required");    
+        var message = this.get_message(default_message, name, "is required");    
         var validation = [this.presentValue, name, message];
         // use abstractValidations instaed of arrays
         //console.log(validations);
@@ -105,7 +109,7 @@ Validator = AbstractClass.extend({
         for(var i = 0; i < params_array.length; i++)
       { 
         var name = params_array[i];
-        var message = this.get_message(default_message, name, "not a valid email");   
+        var message = this.get_message(default_message, name, "is not a valid email");   
         var validation = [this.emailFormat, name, message];
         validations.push(validation);
       }
@@ -116,7 +120,7 @@ Validator = AbstractClass.extend({
           for(var i = 0; i < params_array.length; i++)
         { 
           var name = params_array[i];
-          var message = this.get_message(default_message, name, "not a valid value");   
+          var message = this.get_message(default_message, name, "is not a valid value");   
           var validation = [this.usernameFormat, name, message];
           validations.push(validation);
         }
@@ -127,7 +131,7 @@ Validator = AbstractClass.extend({
           for(var i = 0; i < params_array.length; i++)
         { 
           var name = params_array[i];
-          var message = this.get_message(default_message, name, "not a valid value");   
+          var message = this.get_message(default_message, name, "is not a valid value");   
           var validation = [this.testWithFormat(format), name, message];
           validations.push(validation);
         }
@@ -135,17 +139,24 @@ Validator = AbstractClass.extend({
       },
       require_length_validation_of: function(params_array, min, max, default_message){
         validations = this.validations;
-        for(var i = 0; i < params_array.length; i++)
-      { 
-        var name = params_array[i];
-        var message = this.get_message(default_message, name, "not a valid length");    
-        var validation = [this.defineValidSize(min, max), name, message];
-        validations.push(validation);
-      }
-      return validations;
+        if(typeof(params_array) == "string"){
+          var name = params_array;
+          var message = this.get_message(default_message, name, "has not a valid length");    
+          var validation = [this.defineValidSize(min, max), name, message];
+          validations.push(validation);
+        }else{
+          for(var i = 0; i < params_array.length; i++){ 
+            var name = params_array[i];
+            var message = this.get_message(default_message, name, "has not a valid length");    
+            var validation = [this.defineValidSize(min, max), name, message];
+            validations.push(validation);
+          }          
+        }
+        return validations;
       },
       get_validation_errors: function(params){
         validations = this.validations; 
+        //console.log(validations);
         var errors = [];
         for(var i = 0; i < validations.length; i++){
           // loop through validations checking the params
