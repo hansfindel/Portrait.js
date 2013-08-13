@@ -23,15 +23,21 @@ AbstractModel = AbstractClass.extend({
 			}, 
 			makeCopy: function(){
 				return parent.copy(this);
-			}, 
+			}
 		}
 		return object;
 	}, 
+	create: function(params){
+		o = this.new(params);
+		o.save()
+		return o;
+	},
 	//extend: function(params, inheritPropertyValues, extendingClass){
 	extend: function(params, extendingClass){
 		self = this;
 		o = AbstractClass.extend(params, false, self); 
 		o.validator = Validator.new()
+		//o.new = self.new(params)
 		return o;
 	},
 	validator: Validator.new({}), 
