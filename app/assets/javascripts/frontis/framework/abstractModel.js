@@ -22,8 +22,8 @@ AbstractModel = AbstractClass.extend({
 				return false;
 			}, 
 			makeCopy: function(){
-				parent.copy(this);
-			}
+				return parent.copy(this);
+			}, 
 		}
 		return object;
 	}, 
@@ -43,7 +43,7 @@ AbstractModel = AbstractClass.extend({
 		}
 	}, 
 	copy: function(object){
-		return this.new(Class.ownProperties(object))
+		return this.new(AbstractClass.ownProperties(object))
 	}, 
 	addValidation: function(_function, _target, _message){
 		//this.validator
