@@ -45,8 +45,9 @@ AbstractModel = AbstractClass.extend({
 	copy: function(object){
 		return this.new(Class.ownProperties(object))
 	}, 
-	addValidation: function(){
+	addValidation: function(_function, _target, _message){
 		//this.validator
+		this.validator.require_validation(_function, _target, _message);
 	}, 
 	requirePresenceOf: function(target, message){
 		this.validator.require_presence_of(target, message);

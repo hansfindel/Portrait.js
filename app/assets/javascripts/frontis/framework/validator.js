@@ -154,6 +154,10 @@ Validator = AbstractClass.extend({
         }
         return validations;
       },
+      require_validation: function(_function, _target, _message){
+        validation = [_function, _target, _message]
+        this.validations.push(validation);
+      },
       get_validation_errors: function(params){
         validations = this.validations; 
         //console.log(validations);
